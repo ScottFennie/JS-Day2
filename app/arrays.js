@@ -4,6 +4,9 @@
 // output: ['is', 'a', 'split', 'sentence.', 'This']
 
 function rearranger(arr) {
+    arr.shift()
+    arr.push("This", 4)
+    return arr
 }
 
 
@@ -16,6 +19,17 @@ function rearranger(arr) {
 // output: 42
 
 function largestNum(arr) {
+    let largest = 0
+    for (let i = 0; i <= arr.length; i++) {
+        const num = arr[i];
+
+        if (num > largest) {
+            largest = num
+        }
+
+    }
+
+    return largest
 }
 
 
@@ -28,6 +42,20 @@ function largestNum(arr) {
 // output: [16, 8, 4, 28]
 
 function elemsTimesLength(arr) {
+
+    let newArr = []
+
+    for (let i = 0; i <= arr.length; i++) {
+        const newNum = arr[i];
+
+        let arrNum = newNum * arr.length
+
+        newArr.push(arrNum)
+
+
+
+    }
+    return newArr
 }
 
 
@@ -62,9 +90,23 @@ let flights = [{
 
 
 function flightCost(destination, firstClass) {
-    //***hint: use the find method***
+
+    console.log(destination.toUpperCase())
+
+    const found = flights.find(f => f.to == destination.toUpperCase())
+
+    if (firstClass === false) {
+        return found.prices.standard
+    }
+    return found.prices.firstClass
+
+
+
 
 }
+
+
+
 
 
 // ------------------------------------------
@@ -80,10 +122,19 @@ function flightCost(destination, firstClass) {
 
 
 let staff = [{ id: 1, name: 'Jon' }, { id: 2, name: 'Yuli' }, { id: 21, name: 'Peter' },
-{ id: 17, name: 'St. MaryLou de la Playa Carmen' }, { id: 51, name: 'Doug' },
-{ id: 881, name: 'Paul' }, { id: 0, name: 'Jon' }, { id: 999, name: 'Timma' }]
+    { id: 17, name: 'St. MaryLou de la Playa Carmen' }, { id: 51, name: 'Doug' },
+    { id: 881, name: 'Paul' }, { id: 0, name: 'Jon' }, { id: 999, name: 'Timma' }
+]
 
 function findById(id) {
+
+    let elem = staff.find(i => i.id == id)
+
+
+    if (!elem) {
+        return { error: "No user with that id." }
+    }
+    return elem
 
 }
 
@@ -111,4 +162,8 @@ let theBand = {
 }
 
 function bandMemberDetails(name) {
+
+    let member = theBand.members.find(b => b.name.includes(name))
+
+    return member.name + " " + "is in the band and plays the" + " " + member.instrument
 }
